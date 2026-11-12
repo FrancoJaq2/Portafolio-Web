@@ -74,7 +74,8 @@
           <button class="btn btn-outline btn-sm cmd-k-btn" aria-label="Buscar (Ctrl+K)">
             <i data-lucide="search" class="icon-sm"></i> <kbd>Ctrl K</kbd>
           </button>
-          <a class="btn btn-primary btn-sm" href="assets/cv-franco-aravena.pdf" download>
+          <!-- CORREGIDO: Ruta del CV directo en la raíz -->
+          <a class="btn btn-primary btn-sm" href="cv-franco-aravena.pdf" download>
             Descargar CV
           </a>
         </div>
@@ -88,6 +89,7 @@
           <i data-lucide="sun" class="icon-sun"></i>
           <i data-lucide="moon" class="icon-moon"></i>
         </button>
+        <!-- CORREGIDO: Ruta del CV directo en la raíz -->
         <a class="btn btn-outline btn-sm nav-cv" href="cv-franco-aravena.pdf" download>CV</a>
         
         <button type="button" class="hamburger" id="menu-toggle" aria-expanded="false" aria-controls="primary-nav" aria-label="Abrir menú">
@@ -420,11 +422,13 @@
               <a href="#" class="btn btn-outline" id="link-whatsapp" target="_blank" rel="noopener noreferrer">
                 <i data-lucide="message-circle" class="icon-sm"></i> WhatsApp
               </a>
+              <!-- CORREGIDO: Icono linkedin reemplazado por link genérico -->
               <a href="#" class="btn btn-outline" id="link-linkedin" target="_blank" rel="noopener noreferrer">
-                <i data-lucide="linkedin" class="icon-sm"></i> LinkedIn
+                <i data-lucide="link" class="icon-sm"></i> LinkedIn
               </a>
+              <!-- CORREGIDO: Icono github reemplazado por external-link -->
               <a href="#" class="btn btn-outline" id="link-github" target="_blank" rel="noopener noreferrer">
-                <i data-lucide="github" class="icon-sm"></i> GitHub
+                <i data-lucide="external-link" class="icon-sm"></i> GitHub
               </a>
             </div>
             <p class="contact-location"><i data-lucide="map-pin" class="icon-sm"></i> Santiago, Chile · Remoto o presencial</p>
@@ -499,7 +503,7 @@
     "@type": "Person",
     "name": "Franco Javier Aravena Quinteros",
     "jobTitle": "Técnico en Ciberseguridad",
-    "email": "mailto:francojaq32@gmail.com",
+    "email": "mailto:aravena.tech@gmail.com",
     "url": "https://github.com/FrancoJaq2",
     "address": {
       "@type": "PostalAddress",
