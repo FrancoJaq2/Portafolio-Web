@@ -1,0 +1,62 @@
+{
+  "SOC-Home-Lab": {
+    "titulo": "SOC Home Lab con Wazuh SIEM",
+    "descripcion": "Laboratorio de operaciones de seguridad en hardware propio para detección y triage de alertas.",
+    "tags": ["Wazuh", "Linux", "OpenSearch"],
+    "filtros": ["siem", "incidentes"],
+    "marcos": ["NIST CSF", "ISO/IEC 27001"],
+    "informe": {
+      "resumen": "Despliegue de un entorno de laboratorio para simular operaciones de un Centro de Operaciones de Seguridad (SOC). Se implementó Wazuh 4.14 (Manager, Indexer y Dashboard) sobre Ubuntu Server, con agentes en endpoints Linux y Windows.",
+      "alcance": "Monitoreo de eventos de seguridad, recolección de logs y triage manual de alertas generadas por actividad sospechosa en una red privada aislada.",
+      "metodologia": "Instalación y configuración de la arquitectura Wazuh. Integración de agentes, definición de políticas de recolección y ejecución de pruebas de concepto para generar telemetría (ej. intentos de fuerza bruta, ejecución de comandos).",
+      "hallazgos": [
+        "Generación constante de alertas por intentos de autenticación fallidos en el endpoint Linux.",
+        "Detección de modificaciones en archivos críticos del sistema (FIM) mediante Rootcheck.",
+        "Necesidad de ajustar reglas para reducir falsos positivos en configuraciones base del sistema operativo."
+      ],
+      "respuesta": "Triage manual de las alertas clasificando severidad. Redacción de informes de incidente documentando el evento, su origen y la clasificación como falso positivo o amenaza real. Hoja de ruta hacia la respuesta activa.",
+      "marcos": "Alineación de las actividades de monitoreo con las funciones de NIST CSF (Identify, Detect, Respond) y principios de gestión de incidentes de ISO/IEC 27001.",
+      "aprendizajes": "Comprensión práctica de la arquitectura de un SIEM, la importancia del ajuste fino (tuning) de reglas y la documentación clara para el traspaso de turnos en un SOC."
+    }
+  },
+  "Laboratorio-Analisis-Phishing": {
+    "titulo": "Análisis de Incidente de Phishing",
+    "descripcion": "Respuesta a incidentes, análisis de cabeceras maliciosas y extracción de Indicadores de Compromiso (IoCs).",
+    "tags": ["OSINT", "Email Header", "VirusTotal"],
+    "filtros": ["phishing", "incidentes"],
+    "marcos": ["MITRE ATT&CK (Reconnaissance)"],
+    "informe": {
+      "resumen": "Análisis técnico de un correo electrónico sospechoso (.eml) recibido en un entorno controlado, simulando el flujo de trabajo de un analista SOC frente a un intento de phishing.",
+      "alcance": "Inspección de cabeceras de correo, validación de mecanismos de autenticación (SPF, DKIM, DMARC) y análisis de infraestructura del remitente.",
+      "metodologia": "Extracción y lectura del código fuente del correo. Consulta de reputación de IPs y dominios en herramientas OSINT (VirusTotal, Shodan, AlienVault OTX, Cisco Talos).",
+      "hallazgos": [
+        "Discrepancia entre el campo 'From' visible para el usuario y el 'Return-Path' real.",
+        "Uso de typosquatting (suplantación de dominio) en la dirección del remitente.",
+        "Fallos en la validación de SPF y DMARC, indicando intento de suplantación."
+      ],
+      "respuesta": "Documentación de una tabla de IoCs (Indicadores de Compromiso) con IPs y hashes. Propuesta de plan de contención: bloqueo de dominios en el gateway de correo, threat hunting de 48 horas y recomendaciones de concientización (MFA, verificación en dos pasos).",
+      "marcos": "Mapeo de la táctica de reconocimiento y acceso inicial según MITRE ATT&CK. Aplicación de principios de respuesta a incidentes.",
+      "aprendizajes": "Desarrollo de habilidades de análisis de artefactos de correo, uso de inteligencia de amenazas (CTI) y comunicación efectiva de hallazgos técnicos."
+    }
+  },
+  "SOC-Lab-Enumeration-Mitigation": {
+    "titulo": "Superficie de Ataque y Mitigación",
+    "descripcion": "Reconocimiento activo con Nmap, documentación de hallazgos y hardening mediante reglas de firewall.",
+    "tags": ["Nmap", "iptables", "Kali Linux"],
+    "filtros": ["redes"],
+    "marcos": ["NIST CSF (Protect)"],
+    "informe": {
+      "resumen": "Ejercicio de simulación de ataque y defensa. Se realizó un escaneo de red para identificar servicios expuestos y posteriormente se aplicaron medidas de mitigación sobre el firewall local.",
+      "alcance": "Descubrimiento de hosts y escaneo de puertos en una máquina virtual víctima (Metasploitable) desde un entorno atacante (Kali Linux).",
+      "metodologia": "Ejecución de escaneos SYN y de versión con Nmap. Identificación de vulnerabilidades conocidas en los servicios detectados. Implementación de reglas iptables para restringir el tráfico.",
+      "hallazgos": [
+        "Identificación del puerto 21 (FTP) abierto, ejecutando la versión vsftpd 2.3.4 (conocida por contener una puerta trasera).",
+        "Otros puertos de servicios obsoletos expuestos a la red local.",
+        "Falta de segmentación de red en el entorno de pruebas."
+      ],
+      "respuesta": "Aplicación de una regla en iptables para denegar el tráfico entrante al puerto 21. Verificación de la mitigación mediante un nuevo escaneo de Nmap, confirmando que el puerto ahora aparece como 'filtrado'.",
+      "marcos": "Documentación de los hallazgos bajo las directrices de NIST CSF (función Protect) e ISO/IEC 27001 (control de acceso a redes).",
+      "aprendizajes": "Entendimiento práctico del ciclo de vida del ataque (reconocimiento -> explotación) y la importancia del hardening y la reducción de la superficie de ataque."
+    }
+  }
+}

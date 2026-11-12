@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="es-CL" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="color-scheme" content="dark light" />
+
+  <!-- SEGURIDAD: Content Security Policy (con permiso inline para scripts propios) -->
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https://raw.githubusercontent.com https://avatars.githubusercontent.com; connect-src 'self' https://api.github.com;">
+
+  <title>Franco Aravena | Ciberseguridad, Redes e Infraestructura TI</title>
+  <meta name="description" content="Portafolio de Franco Javier Aravena Quinteros. Ciberseguridad, SOC, SIEM (Wazuh), redes y hardening. Laboratorios documentados y proyectos en GitHub. Santiago, Chile." />
+  <meta name="author" content="Franco Javier Aravena Quinteros" />
+
+  <!-- Open Graph / Twitter -->
+  <meta property="og:type" content="profile" />
+  <meta property="og:locale" content="es_CL" />
+  <meta property="og:title" content="Franco Aravena | Ciberseguridad y Redes" />
+  <meta property="og:description" content="Laboratorios de ciberseguridad defensiva, SIEM con Wazuh, análisis de phishing y hardening de redes." />
+  <meta property="og:image" content="assets/og-image.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <!-- Favicon (Monograma FA) -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='14' fill='%230B0F14'/><text x='32' y='43' font-family='ui-monospace,monospace' font-size='24' font-weight='700' fill='%2322D3EE' text-anchor='middle'>FA</text></svg>" />
+
+  <!-- Tipografías -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
+  
+  <!-- Iconos Lucide (CDN) -->
+  <script src="https://cdn.jsdelivr.net/npm/lucide@latest/dist/umd/lucide.min.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/dompurify@3.0.8/dist/purify.min.js" defer></script>
+  <link rel="stylesheet" href="css/styles.css" />
+
+  <script>
+    (function () {
+      try {
+        var saved = localStorage.getItem("theme");
+        var prefersLight = window.matchMedia("(prefers-color-scheme: light)").matches;
+        document.documentElement.setAttribute("data-theme", saved || (prefersLight ? "light" : "dark"));
+      } catch (e) {}
+      document.documentElement.classList.add("js-enabled");
+    })();
+  </script>
+</head>
+<body>
+
+  <a class="skip-link" href="#contenido">Saltar al contenido principal</a>
+  <div class="reading-progress" aria-hidden="true"><span id="reading-progress-bar"></span></div>
+
+  <!-- ============ NAVBAR ============ -->
+  <header class="navbar" id="navbar">
+    <div class="nav-inner">
+      <a class="brand" href="#hero" aria-label="Franco Aravena — inicio">
+        <span class="brand-mark" aria-hidden="true">FA</span>
+        <span class="brand-text">
+          <strong>Franco Aravena</strong>
+          <small>Ciberseguridad</small>
+        </span>
+      </a>
+
+      <nav class="nav-links" id="primary-nav" aria-label="Navegación principal">
+        <ul>
+          <li><a href="#proyectos" class="nav-link">Proyectos</a></li>
+          <li><a href="#actividad" class="nav-link">Actividad</a></li>
+          <li><a href="#habilidades" class="nav-link">Habilidades</a></li>
+          <li><a href="#roadmap" class="nav-link">Roadmap</a></li>
+          <li><a href="#formacion" class="nav-link">Formación</a></li>
+          <li><a href="#contacto" class="nav-link">Contacto</a></li>
+        </ul>
+        <div class="nav-links-actions">
+          <button class="btn btn-outline btn-sm cmd-k-btn" aria-label="Buscar (Ctrl+K)">
+            <i data-lucide="search" class="icon-sm"></i> <kbd>Ctrl K</kbd>
+          </button>
+          <a class="btn btn-primary btn-sm" href="assets/cv-franco-aravena.pdf" download>
+            Descargar CV
+          </a>
+        </div>
+      </nav>
+
+      <div class="nav-actions">
+        <button type="button" class="icon-btn cmd-k-btn" aria-label="Abrir paleta de comandos">
+          <i data-lucide="search"></i>
+        </button>
+        <button type="button" class="icon-btn" id="theme-toggle" aria-label="Cambiar tema">
+          <i data-lucide="sun" class="icon-sun"></i>
+          <i data-lucide="moon" class="icon-moon"></i>
+        </button>
+        <a class="btn btn-outline btn-sm nav-cv" href="assets/cv-franco-aravena.pdf" download>CV</a>
+        
+        <button type="button" class="hamburger" id="menu-toggle" aria-expanded="false" aria-controls="primary-nav" aria-label="Abrir menú">
+          <i data-lucide="menu" class="icon-menu"></i>
+          <i data-lucide="x" class="icon-close"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main id="contenido">
+    <!-- ============ HERO ============ -->
+    <section class="hero" id="hero">
+      <div class="hero-grid-bg" aria-hidden="true"></div>
+      <div class="container hero-inner">
+        <div class="hero-content">
+          <p class="status-chip"><span class="dot dot-green"></span> Disponible de inmediato</p>
+          <h1 class="hero-name">Franco Javier Aravena Quinteros</h1>
+          <p class="hero-role">Ciberseguridad · Redes · Infraestructura TI</p>
+          
+          <p class="hero-roles">
+            <span class="hero-roles-label">Enfoque:</span>
+            <span class="typewriter" id="typewriter" aria-hidden="true"></span><span class="typewriter-cursor" aria-hidden="true"></span>
+            <span class="sr-only">Detección y monitoreo con SIEM, Respuesta a incidentes, Análisis de phishing, Hardening de redes</span>
+          </p>
+
+          <p class="hero-value">
+            Construyo y documento laboratorios prácticos de ciberseguridad defensiva. 
+            Busco mi primera oportunidad para aportar orden, documentación clara y 
+            capacidad analítica en un equipo de seguridad o TI.
+          </p>
+
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#proyectos">Ver proyectos <i data-lucide="arrow-right" class="icon-sm"></i></a>
+            <a class="btn btn-outline" href="#contacto">Contactar</a>
+          </div>
+        </div>
+
+        <div class="hero-aside">
+          <!-- Terminal Simulada -->
+          <div class="terminal-window" id="hero-terminal" aria-label="Terminal interactiva">
+            <div class="terminal-header">
+              <span class="term-dot term-red"></span>
+              <span class="term-dot term-yellow"></span>
+              <span class="term-dot term-green"></span>
+              <span class="term-title">bash — franco@sec-lab</span>
+            </div>
+            <div class="terminal-body" id="terminal-output">
+              <!-- JS inyectará el texto aquí -->
+            </div>
+            <div class="terminal-input-line">
+              <span class="term-prompt">franco@sec-lab:~$</span>
+              <input type="text" id="terminal-input" aria-label="Escribe un comando" autocomplete="off" spellcheck="false" placeholder="Escribe 'help'...">
+            </div>
+            <button id="skip-terminal" class="btn btn-ghost btn-xs">Saltar animación</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ MÉTRICAS ============ -->
+    <section class="section metrics-section" id="metricas" aria-labelledby="metricas-title">
+      <div class="container">
+        <ul class="metrics">
+          <li class="metric-card">
+            <p class="metric-value"><span class="counter" data-count="0" id="metric-repos">0</span></p>
+            <p class="metric-label">Repositorios públicos en GitHub</p>
+          </li>
+          <li class="metric-card">
+            <p class="metric-value"><span class="counter" data-count="3">0</span></p>
+            <p class="metric-label">Laboratorios documentados</p>
+          </li>
+          <li class="metric-card">
+            <p class="metric-value"><span class="counter" data-count="5">0</span></p>
+            <p class="metric-label">Cursos y certificaciones</p>
+          </li>
+          <li class="metric-card">
+            <p class="metric-value"><span class="counter" data-count="3">0</span></p>
+            <p class="metric-label">Marcos de referencia aplicados</p>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ============ PROYECTOS ============ -->
+    <section class="section" id="proyectos" aria-labelledby="proyectos-title">
+      <div class="container">
+        <header class="section-head">
+          <p class="section-kicker">Evidencia práctica</p>
+          <h2 id="proyectos-title">Proyectos y Laboratorios</h2>
+          <p class="section-sub">Casos documentados en GitHub. Haz clic en "Ver informe" para leer el detalle.</p>
+        </header>
+
+        <div class="exp-filters" role="group" aria-label="Filtrar proyectos">
+          <button type="button" class="chip-filter is-active" data-filter="todo" aria-pressed="true">Todo</button>
+          <button type="button" class="chip-filter" data-filter="siem" aria-pressed="false">SIEM y monitoreo</button>
+          <button type="button" class="chip-filter" data-filter="incidentes" aria-pressed="false">Respuesta a incidentes</button>
+          <button type="button" class="chip-filter" data-filter="redes" aria-pressed="false">Redes y hardening</button>
+          <button type="button" class="chip-filter" data-filter="phishing" aria-pressed="false">Phishing</button>
+        </div>
+
+        <div class="projects-grid" id="projects-grid">
+          <!-- Las tarjetas de proyectos curados se inyectarán vía JS desde config.js y projects.json -->
+          <article class="project-card skeleton-card" data-tags="siem">
+            <div class="skeleton-line skeleton-title"></div>
+            <div class="skeleton-line skeleton-text"></div>
+          </article>
+          <article class="project-card skeleton-card" data-tags="phishing">
+            <div class="skeleton-line skeleton-title"></div>
+            <div class="skeleton-line skeleton-text"></div>
+          </article>
+          <article class="project-card skeleton-card" data-tags="redes">
+            <div class="skeleton-line skeleton-title"></div>
+            <div class="skeleton-line skeleton-text"></div>
+          </article>
+        </div>
+
+        <div class="other-repos-section">
+          <h3 class="other-repos-title">Otros repositorios <span class="badge">Auto</span></h3>
+          <div class="other-repos-grid" id="other-repos-grid">
+            <!-- Repos no curados se inyectan aquí vía JS -->
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- DRAWER (Panel lateral para informes y README) -->
+    <div class="drawer-overlay" id="drawer-overlay" aria-hidden="true"></div>
+    <aside class="drawer" id="project-drawer" aria-hidden="true" aria-modal="true" role="dialog" aria-labelledby="drawer-title">
+      <div class="drawer-header">
+        <h2 id="drawer-title">Cargando...</h2>
+        <button class="icon-btn" id="drawer-close" aria-label="Cerrar panel"><i data-lucide="x"></i></button>
+      </div>
+      <div class="drawer-tabs" role="tablist">
+        <button class="drawer-tab is-active" id="tab-report" role="tab" aria-selected="true" aria-controls="panel-report">Informe SOC</button>
+        <button class="drawer-tab" id="tab-readme" role="tab" aria-selected="false" aria-controls="panel-readme">README en vivo</button>
+      </div>
+      <div class="drawer-body" id="drawer-body">
+        <div class="drawer-panel" id="panel-report" role="tabpanel" aria-labelledby="tab-report">
+          <!-- Contenido curado del JSON -->
+        </div>
+        <div class="drawer-panel is-hidden markdown-body" id="panel-readme" role="tabpanel" aria-labelledby="tab-readme">
+          <!-- README sanitizado se inyecta aquí -->
+        </div>
+      </div>
+    </aside>
+
+    <!-- ============ ACTIVIDAD ============ -->
+    <section class="section section-alt" id="actividad" aria-labelledby="actividad-title">
+      <div class="container">
+        <header class="section-head">
+          <p class="section-kicker">GitHub en vivo</p>
+          <h2 id="actividad-title">Actividad reciente</h2>
+          <p class="section-sub">Últimos commits en los laboratorios principales.</p>
+        </header>
+        <div class="activity-timeline" id="activity-timeline">
+          <!-- Skeleton loader -->
+          <div class="timeline-item skeleton-line"></div>
+          <div class="timeline-item skeleton-line"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ HABILIDADES ============ -->
+    <section class="section" id="habilidades" aria-labelledby="habilidades-title">
+      <div class="container">
+        <header class="section-head">
+          <p class="section-kicker">Stack técnico</p>
+          <h2 id="habilidades-title">Habilidades</h2>
+        </header>
+        <div class="skills-grid">
+          <article class="skill-card reveal">
+            <h3><i data-lucide="shield" class="icon-accent"></i> SIEM y monitoreo</h3>
+            <ul class="chips">
+              <li>Wazuh (Manager, Indexer, Dashboard)</li>
+              <li>OpenSearch</li>
+              <li>Triage de alertas</li>
+              <li>Informes de incidente</li>
+            </ul>
+          </article>
+          <article class="skill-card reveal">
+            <h3><i data-lucide="network" class="icon-accent"></i> Redes</h3>
+            <ul class="chips">
+              <li>TCP/IP</li>
+              <li>Wireshark</li>
+              <li>Cisco Packet Tracer</li>
+              <li>Fundamentos CCNA</li>
+            </ul>
+          </article>
+          <article class="skill-card reveal">
+            <h3><i data-lucide="crosshair" class="icon-accent"></i> Reconocimiento y hardening</h3>
+            <ul class="chips">
+              <li>Nmap</li>
+              <li>iptables</li>
+              <li>Análisis de superficie de ataque</li>
+            </ul>
+          </article>
+          <article class="skill-card reveal">
+            <h3><i data-lucide="search" class="icon-accent"></i> Inteligencia de amenazas</h3>
+            <ul class="chips">
+              <li>VirusTotal</li>
+              <li>Shodan</li>
+              <li>AlienVault OTX</li>
+              <li>Cisco Talos</li>
+              <li>Análisis de cabeceras</li>
+            </ul>
+          </article>
+          <article class="skill-card reveal">
+            <h3><i data-lucide="book-open" class="icon-accent"></i> Marcos y estándares</h3>
+            <ul class="chips">
+              <li>MITRE ATT&CK</li>
+              <li>NIST CSF</li>
+              <li>ISO/IEC 27001</li>
+            </ul>
+          </article>
+          <article class="skill-card reveal">
+            <h3><i data-lucide="terminal" class="icon-accent"></i> Sistemas y virtualización</h3>
+            <ul class="chips">
+              <li>Linux (Ubuntu, Kali, EndeavourOS, RHEL)</li>
+              <li>VMware</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ ROADMAP ============ -->
+    <section class="section section-alt" id="roadmap" aria-labelledby="roadmap-title">
+      <div class="container">
+        <header class="section-head">
+          <p class="section-kicker">Próximos pasos</p>
+          <h2 id="roadmap-title">En lo que estoy trabajando</h2>
+        </header>
+        <div class="kanban-board">
+          <div class="kanban-col">
+            <h3 class="kanban-title">En desarrollo</h3>
+            <div class="kanban-card">
+              <span class="tag tag-blue">SOC-Home-Lab</span>
+              <p>Plantillas de informe de incidente</p>
+            </div>
+            <div class="kanban-card">
+              <span class="tag tag-blue">SOC-Home-Lab</span>
+              <p>Enriquecimiento con VirusTotal y AbuseIPDB</p>
+            </div>
+          </div>
+          <div class="kanban-col">
+            <h3 class="kanban-title">Siguiente</h3>
+            <div class="kanban-card">
+              <span class="tag tag-gray">SOC-Home-Lab</span>
+              <p>Respuesta activa</p>
+            </div>
+            <div class="kanban-card">
+              <span class="tag tag-gray">SOC-Home-Lab</span>
+              <p>Integración de Suricata y TheHive</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ FORMACIÓN ============ -->
+    <section class="section" id="formacion" aria-labelledby="formacion-title">
+      <div class="container">
+        <header class="section-head">
+          <p class="section-kicker">Credenciales</p>
+          <h2 id="formacion-title">Formación y certificaciones</h2>
+        </header>
+        <div class="edu-grid">
+          <article class="edu-card reveal highlight-card">
+            <p class="edu-status">En curso</p>
+            <h3>Técnico de Nivel Superior en Ciberseguridad</h3>
+            <p class="edu-inst">Instituto Profesional de Chile (IPCHILE)</p>
+            <p class="edu-year">Santiago, Chile</p>
+          </article>
+          <article class="edu-card reveal">
+            <p class="edu-status">Certificación</p>
+            <h3>Introducción a Cisco Packet Tracer</h3>
+            <p class="edu-inst">Cisco Networking Academy</p>
+            <p class="edu-year">Ago 2026</p>
+          </article>
+          <article class="edu-card reveal">
+            <p class="edu-status">Certificación</p>
+            <h3>Conceptos básicos de redes</h3>
+            <p class="edu-inst">Cisco Networking Academy</p>
+            <p class="edu-year">Ago 2026</p>
+          </article>
+          <article class="edu-card reveal">
+            <p class="edu-status">Certificación</p>
+            <h3>CCNA: Introducción a las redes</h3>
+            <p class="edu-inst">Cisco Networking Academy</p>
+            <p class="edu-year">Ago 2025</p>
+          </article>
+          <article class="edu-card reveal">
+            <p class="edu-status">Certificación</p>
+            <h3>Red Hat System Administration I (RH124-RHA)</h3>
+            <p class="edu-inst">Red Hat</p>
+            <p class="edu-year">May 2025</p>
+          </article>
+          <article class="edu-card reveal">
+            <p class="edu-status">Certificación</p>
+            <h3>Introducción a la Ciberseguridad</h3>
+            <p class="edu-inst">Cisco Networking Academy</p>
+            <p class="edu-year">Abr 2025</p>
+          </article>
+        </div>
+        <div class="languages-block">
+          <p><strong>Idiomas:</strong> Español (nativo) · Inglés técnico (lectura y comprensión de documentación)</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ CONTACTO ============ -->
+    <section class="section section-alt" id="contacto" aria-labelledby="contacto-title">
+      <div class="container">
+        <header class="section-head">
+          <p class="section-kicker">Hablemos</p>
+          <h2 id="contacto-title">Contacto</h2>
+          <p class="section-sub">Busco mi primera oportunidad en un equipo de ciberseguridad (SOC N1, seguridad o redes). Disponible de inmediato.</p>
+        </header>
+
+        <div class="contact-layout">
+          <div class="contact-info">
+            <div class="contact-actions">
+              <button class="btn btn-primary" id="btn-copy-email">
+                <i data-lucide="copy" class="icon-sm"></i> Copiar correo
+              </button>
+              <a href="#" class="btn btn-outline" id="link-email">
+                <i data-lucide="mail" class="icon-sm"></i> Enviar correo
+              </a>
+              <a href="#" class="btn btn-outline" id="link-whatsapp" target="_blank" rel="noopener noreferrer">
+                <i data-lucide="message-circle" class="icon-sm"></i> WhatsApp
+              </a>
+              <a href="#" class="btn btn-outline" id="link-linkedin" target="_blank" rel="noopener noreferrer">
+                <i data-lucide="linkedin" class="icon-sm"></i> LinkedIn
+              </a>
+              <a href="#" class="btn btn-outline" id="link-github" target="_blank" rel="noopener noreferrer">
+                <i data-lucide="github" class="icon-sm"></i> GitHub
+              </a>
+            </div>
+            <p class="contact-location"><i data-lucide="map-pin" class="icon-sm"></i> Santiago, Chile · Remoto o presencial</p>
+            <p class="contact-location"><i data-lucide="clock" class="icon-sm"></i> Disponibilidad para turnos</p>
+          </div>
+
+          <form class="contact-form" id="contact-form" novalidate>
+            <div class="field">
+              <label for="cf-name">Nombre</label>
+              <input type="text" id="cf-name" name="nombre" required />
+            </div>
+            <div class="field">
+              <label for="cf-email">Correo</label>
+              <input type="email" id="cf-email" name="correo" required />
+            </div>
+            <div class="field">
+              <label for="cf-message">Mensaje</label>
+              <textarea id="cf-message" name="mensaje" rows="4" required></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary btn-block">Enviar mensaje</button>
+            <p class="form-feedback" id="cf-feedback" role="status" aria-live="polite"></p>
+          </form>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div class="footer-brand">
+        <p>© <span id="year">2026</span> Franco Javier Aravena Quinteros</p>
+        <p class="footer-location">Santiago, Chile</p>
+      </div>
+      
+      <div class="footer-security">
+        <p><strong>Sobre este sitio:</strong> Construido con HTML, CSS y JS vanilla. 
+        Sin cookies, sin analíticas de terceros, sin frameworks. 
+        Content-Security-Policy restrictiva implementada. 
+        Datos de GitHub obtenidos vía API pública sin tokens.</p>
+      </div>
+
+      <button type="button" class="btn btn-ghost btn-sm" id="back-to-top">
+        Volver arriba <i data-lucide="arrow-up" class="icon-sm"></i>
+      </button>
+    </div>
+  </footer>
+
+  <!-- ============ COMMAND PALETTE (Ctrl+K) ============ -->
+  <div class="palette-overlay" id="palette-overlay" aria-hidden="true"></div>
+  <div class="command-palette" id="command-palette" aria-hidden="true" role="dialog" aria-modal="true" aria-label="Paleta de comandos">
+    <div class="palette-header">
+      <i data-lucide="search" class="icon-accent"></i>
+      <input type="text" id="palette-input" placeholder="Buscar sección o proyecto..." aria-label="Buscar">
+    </div>
+    <ul class="palette-list" id="palette-list">
+      <li data-target="#hero">Ir al inicio</li>
+      <li data-target="#proyectos">Ir a Proyectos</li>
+      <li data-target="#actividad">Ir a Actividad</li>
+      <li data-target="#habilidades">Ir a Habilidades</li>
+      <li data-target="#roadmap">Ir a Roadmap</li>
+      <li data-target="#formacion">Ir a Formación</li>
+      <li data-target="#contacto">Ir a Contacto</li>
+    </ul>
+  </div>
+
+  <!-- JSON-LD -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Franco Javier Aravena Quinteros",
+    "jobTitle": "Técnico en Ciberseguridad",
+    "email": "mailto:francojaq32@gmail.com",
+    "url": "https://github.com/FrancoJaq2",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Santiago",
+      "addressCountry": "CL"
+    },
+    "sameAs": [
+      "https://linkedin.com/in/franco-aravena-323186368",
+      "https://github.com/FrancoJaq2"
+    ],
+    "knowsAbout": ["Ciberseguridad", "SOC", "SIEM", "Wazuh", "Redes", "Nmap", "iptables", "MITRE ATT&CK", "NIST CSF", "ISO 27001"]
+  }
+  </script>
+
+  <!-- Scripts (Módulos ES) -->
+  <script type="module" src="js/main.js"></script>
+</body>
+</html>
